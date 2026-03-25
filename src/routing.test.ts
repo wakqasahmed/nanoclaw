@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 
-import { _initTestDatabase, getAllChats, storeChatMetadata } from './db.js';
+import { _initTestDatabase, storeChatMetadata } from './db.js';
 import { getAvailableGroups, _setRegisteredGroups } from './index.js';
 
 beforeEach(() => {
@@ -21,6 +21,11 @@ describe('JID ownership patterns', () => {
   it('WhatsApp DM JID: ends with @s.whatsapp.net', () => {
     const jid = '12345678@s.whatsapp.net';
     expect(jid.endsWith('@s.whatsapp.net')).toBe(true);
+  });
+
+  it('Mattermost channel JID: starts with mm:', () => {
+    const jid = 'mm:abc123def456';
+    expect(jid.startsWith('mm:')).toBe(true);
   });
 });
 
